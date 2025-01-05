@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-// const authRoute = require("./src/routes/auth.routes");
+const authRoute = require("./src/routes/auth.routes");
+const postRoute = require("./src/routes/post.routes");
+const commentRoute = require("./src/routes/comment.routes");
 
 const app = express();
 
@@ -18,7 +20,9 @@ mongoose
 
 app.use(express.json());
 
-// app.use("/api/auth", authRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/numberPost", postRoute);
+app.use("/api/comment", commentRoute);
 
 let port = process.env.PORT;
 
