@@ -4,9 +4,11 @@
 
 @import "abstracts/variables";
 
-// @import "components/checkItem";
+@import "components/topBar";
+@import "components/addPostForm";
 
-// @import "pages/notFound";
+@import "pages/signup";
+@import "pages/notFound";
 // @import "pages/home";
 
 *,
@@ -69,8 +71,16 @@ p {
   font-family: "Montserrat", serif;
   line-height: 18.5px;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: $primaryAlt-color;
+  }
+
+  &.alt {
+    background-color: transparent;
+    border: 1px solid #000;
   }
 }

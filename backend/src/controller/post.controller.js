@@ -2,7 +2,6 @@ const Post = require("../models/Post");
 
 exports.addPost = async (req, res) => {
   const { number, userId } = req.body;
-
   function isValidNumber(value) {
     // Check if the value is a valid finite number
     const number = parseFloat(value);

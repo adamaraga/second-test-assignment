@@ -1,0 +1,29 @@
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  border: 1px solid #bfbfbf;
+  padding: 0 30px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  gap: 10px;
+
+  & h1 {
+    font-size: 20px;
+  }
+
+  &__left {
+    &__authBtn {
+      display: flex;
+      gap: 20px;
+
+      & button {
+        width: 80px;
+        min-width: 80px;
+      }
+    }
+  }
+}

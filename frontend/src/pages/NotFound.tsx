@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-// import Button from "../components/Button";
+import Button from "../components/Button";
 
 const NotFound = () => {
   useEffect(() => {
@@ -15,7 +15,9 @@ const NotFound = () => {
         The page you are looking for was not found
       </p>
 
-      <Link to="/">{/* <Button>Back To Home</Button> */}</Link>
+      <Link to="/">
+        <Button>Back To Home</Button>
+      </Link>
     </div>
   );
 };

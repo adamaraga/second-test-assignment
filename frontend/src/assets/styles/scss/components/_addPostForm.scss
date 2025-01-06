@@ -1,0 +1,14 @@
+.addPostForm {
+  display: flex;
+  justify-content: center;
+
+  &__main {
+    width: 100%;
+    max-width: 200px;
+
+    & h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+}

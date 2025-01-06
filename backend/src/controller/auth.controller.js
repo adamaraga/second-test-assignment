@@ -5,6 +5,16 @@ var bcrypt = require("bcryptjs");
 exports.register = async (req, res) => {
   const { username, password } = req.body;
   try {
+    const oldUser = await User.findOne({
+      username,
+    });
+
+    if (oldUser) {
+      return res.status(409).json({
+        message: "The username already exists. Please choose a different one.",
+      });
+    }
+
     const user = new User({ username, password: bcrypt.hashSync(password, 8) });
     await user.save();
     res.status(200).json({ message: "User registered successfully" });
@@ -22,10 +32,13 @@ exports.login = async (req, res) => {
       username,
     });
 
+    if (!user) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
     const passwordIsValid = bcrypt.compareSync(password, user.password);
 
-    if (!user || !passwordIsValid) {
-      return res.status(401).json({ message: "Invalid Credentials" });
+    if (!passwordIsValid) {
+      return res.status(401).json({ message: "Invalid username or password" });
     }
 
     const token = jwt.sign(
