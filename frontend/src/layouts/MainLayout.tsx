@@ -3,7 +3,7 @@ import TopBar from "../components/TopBar";
 
 const MainLayout = () => {
   return (
-    <div style={{ marginTop: 110 }}>
+    <div className="mainLayout">
       <TopBar />
       <Outlet />
     </div>

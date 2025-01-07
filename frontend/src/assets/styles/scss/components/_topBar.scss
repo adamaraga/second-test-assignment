@@ -9,13 +9,43 @@
   left: 0;
   top: 0;
   width: 100vw;
-  gap: 10px;
+  gap: 20px;
+  background-color: #fff;
 
   & h1 {
     font-size: 20px;
+
+    @media screen and (max-width: 700px) {
+      font-size: 15px;
+    }
   }
 
   &__left {
+    &__logout {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 20px;
+      @media screen and (max-width: 700px) {
+        gap: 10px;
+      }
+      @media screen and (max-width: 500px) {
+        flex-wrap: wrap;
+      }
+
+      & span {
+        font-weight: 600;
+      }
+
+      & button {
+        @media screen and (max-width: 700px) {
+          width: 70px;
+          min-width: 70px;
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+    }
     &__authBtn {
       display: flex;
       gap: 20px;
@@ -23,6 +53,13 @@
       & button {
         width: 80px;
         min-width: 80px;
+
+        @media screen and (max-width: 700px) {
+          width: 60px;
+          min-width: 60px;
+          height: 30px;
+          font-size: 12px;
+        }
       }
     }
   }

@@ -1,0 +1,20 @@
+.comments {
+  &__item {
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+  &__reply {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  &__showmore {
+    text-decoration: underline;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}

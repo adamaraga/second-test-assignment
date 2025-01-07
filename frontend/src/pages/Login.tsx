@@ -60,7 +60,7 @@ const Login = () => {
           password,
         };
 
-        const res: any = await login(data);
+        const res = await login(data);
 
         setLoading(false);
         toast.success("Login successfully");

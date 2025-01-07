@@ -4,12 +4,18 @@ import { Context } from "../context/MainContext";
 import { toast } from "react-toastify";
 import { ErrorMessage, Input } from "./styled-component/formInput";
 import Button from "./Button";
+import Loading from "./Loading";
+import { PostType } from "../types";
 
 interface InputErrorType {
   number?: string;
 }
 
-const AddPostForm = () => {
+const AddPostForm = ({
+  setPosts,
+}: {
+  setPosts: React.Dispatch<React.SetStateAction<PostType[]>>;
+}) => {
   const [number, setNumber] = useState("");
   const { user } = useContext(Context);
   const [inputError, setInputError] = useState<InputErrorType>({});
@@ -53,7 +59,16 @@ const AddPostForm = () => {
           setNumber("");
 
           setLoading(false);
-          console.log("res.data", res.data);
+          const newComment = {
+            ...res.data,
+            userId: {
+              username: user?.username,
+            },
+          };
+          setPosts((curr) => {
+            return [newComment, ...curr];
+          });
+          // console.log("res.data", res.data);
           toast.success("Started successfully");
         } catch (err: any) {
           setLoading(false);
@@ -69,9 +84,8 @@ const AddPostForm = () => {
   return (
     <div className="addPostForm">
       <form onSubmit={handleSubmit} className="addPostForm__main">
-        <h2>Start a chain </h2>
+        <h2>Start a chain calculation</h2>
         <div className="signup__main__form__inputCon">
-          {/* <label htmlFor="number"> Number</label> */}
           <Input
             id="number"
             type="number"
@@ -83,7 +97,7 @@ const AddPostForm = () => {
           <ErrorMessage>{inputError?.number}</ErrorMessage>
         </div>
 
-        <Button>Submit</Button>
+        <Button>{loading ? <Loading button={true} /> : "Submit"} </Button>
       </form>
     </div>
   );

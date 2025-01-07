@@ -9,6 +9,32 @@ export interface AuthDataType {
   password: string;
 }
 
+export interface CommentType {
+  _id: string;
+  operation: string;
+  number: number;
+  result: number;
+  userId: {
+    _id: string;
+    username: string;
+  };
+  postId: string;
+  parentId: string;
+  replies: CommentType[];
+  comments?: CommentType[];
+  createdAt: string;
+}
+export interface PostType {
+  _id: "string";
+  number: number;
+  userId: {
+    _id: string;
+    username: string;
+  };
+  comments: CommentType[];
+  createdAt: string;
+}
+
 //////// Form types ////////
 export interface InputType {
   error?: boolean;
@@ -16,7 +42,7 @@ export interface InputType {
 
 export interface SelectType {
   error?: boolean;
-  disabled?: boolean;
+  // disabled?: boolean;
 }
 
 export interface ErrorMessageType {

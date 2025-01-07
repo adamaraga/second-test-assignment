@@ -19,7 +19,7 @@ exports.addPost = async (req, res) => {
     });
 
     await post.save();
-    res.status(201).json({ message: "Post added successfully" });
+    res.status(201).json(post);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -64,11 +64,29 @@ exports.getAllPost = async (req, res) => {
             populate: [
               {
                 path: "replies",
-                model: "Comment",
+                populate: [
+                  {
+                    path: "replies",
+                    populate: [
+                      {
+                        path: "replies",
+                        model: "Comment",
+                      },
+                      {
+                        path: "userId",
+                        select: "-password",
+                      },
+                    ],
+                  },
+                  {
+                    path: "userId",
+                    select: "-password",
+                  },
+                ],
               },
               {
                 path: "userId",
-                select: "-password", // Exclude the password field
+                select: "-password",
               },
             ],
           },

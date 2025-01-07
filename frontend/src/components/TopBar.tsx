@@ -28,9 +28,12 @@ const TopBar = () => {
             </Link>
           </div>
         ) : (
-          <Button alt={true} onClick={handleLogout}>
-            Log out
-          </Button>
+          <div className="topBar__left__logout">
+            <span>{user?.username}</span>
+            <Button alt={true} onClick={handleLogout}>
+              Log out
+            </Button>
+          </div>
         )}
       </div>
     </div>

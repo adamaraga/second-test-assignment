@@ -4,8 +4,12 @@
 
 @import "abstracts/variables";
 
+@import "layouts/mainLayout";
+
 @import "components/topBar";
 @import "components/addPostForm";
+@import "components/post";
+@import "components/comments";
 
 @import "pages/signup";
 @import "pages/notFound";
@@ -83,4 +87,11 @@ p {
     background-color: transparent;
     border: 1px solid #000;
   }
+}
+
+.loadingCon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
 }

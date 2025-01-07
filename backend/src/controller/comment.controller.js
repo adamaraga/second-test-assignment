@@ -52,8 +52,14 @@ exports.addComment = async (req, res) => {
 
     await newComment.save();
 
+    console.log("req.body", target.replies);
     // Add the comment to the parent's `children` array
-    target.replies.push(newComment._id);
+    if (parentId) {
+      target.replies.push(newComment._id);
+    } else {
+      target.comments.push(newComment._id);
+    }
+
     await target.save();
 
     res.status(201).json(newComment);

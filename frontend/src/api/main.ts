@@ -3,6 +3,14 @@ import { AuthDataType } from "../types";
 
 const apiURL = process.env.REACT_APP_API_URL + "/api";
 
+interface AddCommentType {
+  postId: string;
+  parentId?: string;
+  operation: string;
+  number: string;
+  userId: string;
+}
+
 export const login = (data: AuthDataType) => {
   return axios.post(`${apiURL}/auth/login`, data);
 };
@@ -23,6 +31,12 @@ export const addNumberPost = (
       headers: { Authorization: "Bearer " + token },
     }
   );
+};
+
+export const addComment = (data: AddCommentType, token: string) => {
+  return axios.post(`${apiURL}/comment/add`, data, {
+    headers: { Authorization: "Bearer " + token },
+  });
 };
 
 export const fetchPosts = async (limit: number, page: number) => {

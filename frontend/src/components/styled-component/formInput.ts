@@ -37,10 +37,10 @@ export const Input = styled.input<InputType>`
 `;
 
 export const Select = styled.select<SelectType>`
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "default")};
+  /* cursor: ${(props) => (props.disabled ? "not-allowed" : "default")}; */
 
-  height: 3rem;
-  width: 25rem;
+  height: 3.5rem;
+  width: 100%;
   border-radius: 5px;
   outline: none;
   box-sizing: border-box;
@@ -51,6 +51,7 @@ export const Select = styled.select<SelectType>`
   margin-bottom: 1rem;
   padding: 0 1rem;
   transition: 0.3s;
+  font-family: inherit;
 
   &:hover {
     border: ${(props) =>
