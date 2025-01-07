@@ -1,0 +1,37 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    networks:
+      - ellty_task_network
+    environment:
+      MONGO_URI: mongodb://mongo:27017/elltydb
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - ellty_task_network
+    environment:
+      REACT_APP_API_URL: http://backend:5000
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - ellty_task_network
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  ellty_task_network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local # Persist MongoDB data locally
