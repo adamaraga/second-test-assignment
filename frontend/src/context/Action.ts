@@ -1,8 +1,4 @@
-import { UserType } from "../types";
-
-type Action =
-  | { type: "USER_LOGIN_SUCCESS"; payload: UserType | null }
-  | { type: "USER_LOGOUT" };
+import { Action, UserType } from "../types";
 
 export const userLoginSuccess = (user: UserType | null): Action => ({
   type: "USER_LOGIN_SUCCESS",

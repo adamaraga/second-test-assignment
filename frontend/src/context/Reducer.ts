@@ -1,12 +1,8 @@
-import { UserType } from "../types";
+import { Action, UserType } from "../types";
 type User = UserType | null;
 type State = {
   user: User;
 };
-
-type Action =
-  | { type: "USER_LOGIN_SUCCESS"; payload: User }
-  | { type: "USER_LOGOUT" };
 
 const Reducer = (state: State, action: Action) => {
   switch (action.type) {

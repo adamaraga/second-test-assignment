@@ -4,6 +4,10 @@ export interface UserType {
   accessToken: string;
 }
 
+export type Action =
+  | { type: "USER_LOGIN_SUCCESS"; payload: UserType | null }
+  | { type: "USER_LOGOUT" };
+
 export interface AuthDataType {
   username: string;
   password: string;
